@@ -5,6 +5,7 @@ const { connectDb } = require('./src/models');
 const SuppliesRoutes = require('./src/routes/suppliesRoutes');
 const DevolutionsRoutes = require('./src/routes/DevolutionsRoutes');
 const ProductCategoriesRoutes = require('./src/routes/productCategoriesRoutes');
+const ProductRoutes = require('./src/routes/productRoutes');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use('/supplies', SuppliesRoutes);
 app.use('/devolutions', DevolutionsRoutes);
 app.use('/productCategories', ProductCategoriesRoutes);
+app.use('/product', ProductRoutes);
 
 const PORT = process.env.SERVER_PORT || 3000;
 
