@@ -19,9 +19,7 @@ const PORT = process.env.SERVER_PORT || 3000;
 
 const startServer = async () => {
     try {
-        // Sincroniza la base de datos y recrea las tablas si es necesario
         await connectDb();
-        // Inicia el servidor después de sincronizar la base de datos
         app.listen(PORT, () => {
             console.log(`Server is running on port ${PORT}`);
         });
