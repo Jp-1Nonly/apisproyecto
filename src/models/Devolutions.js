@@ -31,10 +31,10 @@ const Devolutions = sequelize.define('Devolutions', {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    id_sales: {
+    id_sale: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'Sales',
+            model: 'sale',
             key: 'id',
         },
     },
