@@ -1,6 +1,6 @@
 const express = require('express');
 const rolePermissionController = require('../controllers/rolePermissionController');
-const validateRole = require('../middlewares/validateRole'); // pendiente
+const validateRole = require('../middlewares/validateRole');
 
 const router = express.Router();
 

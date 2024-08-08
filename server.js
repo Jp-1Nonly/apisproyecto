@@ -21,6 +21,7 @@ const permissionRoute = require('./src/routes/permissionRoutes');
 dotenv.config();
 
 const app = express();
+
 app.use(bodyParser.json());
 
 app.use('/supplies', SuppliesRoutes);
