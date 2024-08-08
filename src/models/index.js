@@ -9,6 +9,13 @@ const datasheets = require('./datasheets');
 const datasheetDetails = require('./datasheetDetails');
 const productCategories = require('./productCategories');
 const products = require('./products');
+const boughtDetails = require('./boughtDetails')
+const boughts = require('./boughts')
+const permissions = require('./permissions')
+const providers = require('./providers')
+const rolePermission = require('./rolePermission')
+const roles = require('./roles')
+const users = require('./users')
 
 // Definir asociaciones si es necesario
 Devolutions.belongsTo(Sales, { foreignKey: 'id_sales' });
@@ -35,12 +42,32 @@ products.belongsTo(productCategories, { foreignKey: 'idCategorie' });
 datasheets.hasMany(products, { foreignKey: 'idDatasheet' });
 products.belongsTo(datasheets, { foreignKey: 'idDatasheet' });
 
+boughts.hasMany(boughtDetails, { foreignKey: 'id' });
+boughtDetails.belongsTo(boughts, { foreignKey: 'idBought' });
+
+roles.hasMany(users, { foreignKey: 'id' });
+users.belongsTo(roles, { foreignKey: 'idRole' });
+
+boughts.hasMany(providers, { foreignKey: 'idProvider' });
+providers.belongsTo(boughts, { foreignKey: 'id' });
+
+roles.belongsToMany(permissions, { through: rolePermission, foreignKey: 'idRole' });
+permissions.belongsToMany(roles, { through: rolePermission, foreignKey: 'idPermission' });
+
+
 
 const models = {
     Supplies,
     Devolutions,
     DevolutionsDetails,
-    Sales
+    Sales,
+    roles,
+    permissions,
+    rolePermission,
+    users,
+    boughts,
+    boughtDetails,
+    providers
 };
 
 const connectDb = async () => {
